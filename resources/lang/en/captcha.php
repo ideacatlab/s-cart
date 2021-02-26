@@ -11,5 +11,4 @@ return [
     'captcha_page_register'       => 'Register',
     'captcha_page_forgot_password' => 'Forgot pasword',
     'captcha_page_checkout'       => 'Checkout',
-    'captcha_page_review'         => 'Review product',
 ];

@@ -55,8 +55,8 @@ return [
         'sort'                => 'Sort',
         'search'              => 'Search',
         'add_new'             => 'Add new',
-        'add_new_title'       => 'Add new store',
-        'add_new_des'         => 'Create a new store',
+        'add_new_title'       => 'Add config',
+        'add_new_des'         => 'Create a new config',
         
         'config_info'         => 'Infomation',
         'config_order'        => 'Order',
@@ -72,7 +72,5 @@ return [
         'active_strict'  =>  'Activate domain check mode',
         'active_domain'  =>  'Activate the domain name',
         'active_maintain'  =>  'Activate maintenance mode',
-        'domain_exist' => ' Domain exist already',
-        'value_cannot_change' => 'This value cannot be changed',
     ],
 ];

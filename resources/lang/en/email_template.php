@@ -1,8 +1,8 @@
 <?php
 return [
     'id'     => 'ID',
-    'name'   => 'Name',
-    'group'  => 'Group',
+    'name'   => 'Nume',
+    'group'  => 'Grup',
     'text'   => 'Content',
     'html'   => 'HTML',
     'status' => 'Status',

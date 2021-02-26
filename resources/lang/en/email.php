@@ -12,7 +12,6 @@ return [
     'smtp_load_config' => 'SMTP load config',
     'smtp_load_config_file' => 'Load file config',
     'smtp_load_config_database' => 'Load from database',
-    'msg_goodbye'   => 'Regards,',
     'admin'            => [
         'title'          => 'Config Email',
         'create_success' => 'Create new item success!',
@@ -40,7 +39,7 @@ return [
         'smtp_password'  => 'Password SMTP',
         'smtp_user'      => 'Tài khoản SMTP',
         'smtp_host'      => 'Server SMTP',
-        'help_note'      => '<span class="text-red">(*)</span>: Emails will not be sent directly, but through a queue. You need to set up "artisan schedule: run" first, details <a href="https://s-cart.org/docs/'.config('s-cart.version').'/email.html">HERE</a>',
+        'help_note'      => '<span class="text-red">(*)</span>: Emails will not be sent directly, but through a queue. You need to set up "artisan schedule: run" first, details <a href="https://s-cart.org/docs/'.config('scart.version').'/email.html">HERE</a>',
 
 
     ],
@@ -51,9 +50,7 @@ return [
         'sort'                     => 'Action sort',
         'order_success_to_admin'   => 'Send order success to admin',
         'order_success_to_cutomer' => 'Send order success to customer',
-        'order_success_to_cutomer_pdf' => 'Send order success to customer with pdf invoice',
         'forgot_password'          => 'Send email forgot',
-        'customer_verify'          => 'Customer verification',
         'welcome_customer'         => 'Send email welcome',
         'contact_to_customer'      => 'Send email contact to customer',
         'contact_to_admin'         => 'Send email contact to admin',
@@ -62,21 +59,13 @@ return [
         'email_action_smtp_mode'   => 'SMTP mode',
         'config_smtp'              => 'Config SMTP',
         'other'                    => 'Other',
-        'customer_verify'          => 'Send account verification email',
     ],
     'forgot_password'  => [
-        'title'            => 'Hello!',
-        'reset_button'     => 'Reset password',
-        'reason_sendmail'  => 'You are receiving this email because we received a password reset request for your account.',
-        'note_sendmail'    => 'This password reset link will expire in :count minutes.<br><br>If you did not request a password reset, no further action is required.',
-        'note_access_link' => 'If you’re having trouble clicking the ":reset_button" button, copy and paste the URL below into your web browser :url',
-    ],
-    'verification_content' => [
-        'title'            => 'Hello!',
-        'button'           => 'Verify Email Address',
-        'reason_sendmail'  => 'Please click the button below to verify your email address.',
-        'note_sendmail'    => 'This password reset link will expire in :count minutes.<br><br>If you did not create an account, no further action is required.',
-        'note_access_link' => 'If you’re having trouble clicking the ":button" button, copy and paste the URL below into your web browser :url',
+        'title'           => 'Hello!',
+        'reset_button'    => 'Reset password',
+        'reason_sendmail' => 'You are receiving this email because we received a password reset request for your account.',
+        'note_sendmail'           => 'This password reset link will expire in 60 minutes.<br><br>If you did not request a password reset, no further action is required.<br><br>Regards,<br>:site_admin',
+        'note_access_link'        => 'If you’re having trouble clicking the ":reset_button" button, copy and paste the URL below into your web browser:',
     ],
     'welcome_customer' => [
         'title' => 'Welcome!',
