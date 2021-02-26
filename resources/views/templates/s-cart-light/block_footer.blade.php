@@ -5,18 +5,15 @@
             <div class="row row-40 row-md-50 justify-content-xl-between">
               <div class="col-sm-6 col-lg-4 col-xl-3 wow fadeInRight">
                 <a href="{{ sc_route('home') }}">
-                    <img class="logo-footer" src="{{  asset(sc_store('logo')) }}" alt="{{ sc_store('title') }}">
+                    <img class="logo-footer" src="{{ url('/images/logo/logo.svg') }}" alt="{{ sc_store('title') }}">
                 </a>
-                <p>{{ sc_store('title') }}</p>
-                <p> {!! sc_store('time_active')  !!}</p>
+                <p>Cadouri care creaza amintiri</p>
                 <div class="footer-classic-social">
                   <div class="group-lg group-middle">
                     <div>
                       <ul class="list-inline list-social list-inline-sm">
                         <li><a class="icon mdi mdi-facebook" href="#"></a></li>
-                        <li><a class="icon mdi mdi-twitter" href="#"></a></li>
                         <li><a class="icon mdi mdi-instagram" href="#"></a></li>
-                        <li><a class="icon mdi mdi-google-plus" href="#"></a></li>
                       </ul>
                     </div>
                   </div>
@@ -81,12 +78,10 @@
           <div class="container">
             <div class="row row-10 align-items-center justify-content-sm-between">
               <div class="col-md-auto">
-                <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span><span>&nbsp;</span><span>{{ sc_store('title') }}</span><span>.&nbsp; All rights reserved</span></p>
+                <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span><span>&nbsp;</span><span>CASA ARTIZANALA</span><span>.&nbsp; All rights reserved</span></p>
               </div>
-              <div class="col-md-auto order-md-1">Hosted by <a target="_blank"
-                href="https://giaiphap247.com">GiaiPhap247.com</a></div>
               <div class="col-md-auto">
-                    Power by <a href="{{ config('s-cart.homepage') }}">{{ config('s-cart.name') }} {{ config('s-cart.sub-version') }}</a>
+                    Power by <a href="https://ideacat.ro">IdeaCat</a>
               </div>
             </div>
           </div>

@@ -1,7 +1,7 @@
 @php
 /*
 $layout_page = home
-*/ 
+*/
 @endphp
 
 @extends($sc_templatePath.'.layout')
@@ -36,12 +36,12 @@ $news = $modelNews->start()->setlimit(sc_config('item_top'))->getData();
                     <h5 class="product-title"><a href="{{ $productNew->getUrl() }}">{{ $productNew->name }}</a></h5>
                     {{--// Product name --}}
 
-                    {{-- Display store - if use MultiVendorPro --}}
-                    @if (sc_config_global('MultiVendorPro') && config('app.storeId') == SC_ID_ROOT)
+                    {{-- Display store - if use MultiStorePro --}}
+                    @if (sc_config_global('MultiStorePro') && config('app.storeId') == SC_ID_ROOT)
                       <div class="store-url"><a href="{{ $productNew->goToStore() }}"><i class="fa fa-shopping-bag" aria-hidden="true"></i> {{ trans('front.store').' '. $productNew->store_id  }}</a>
                       </div>
                     @endif
-                    {{-- //Display store - if use MultiVendorPro --}}
+                    {{-- //Display store - if use MultiStorePro --}}
 
                     {{-- Add to cart --}}
                     @if ($productNew->allowSale())
@@ -51,7 +51,7 @@ $news = $modelNews->start()->setlimit(sc_config('item_top'))->getData();
 
                     {!! $productNew->showPrice() !!}
                   </div>
-                  
+
                   {{-- Product type --}}
                   @if ($productNew->price != $productNew->getFinalPrice() && $productNew->kind !=SC_PRODUCT_GROUP)
                     <span><img class="product-badge new" src="{{ asset($sc_templateFile.'/images/home/sale.png') }}" class="new" alt="" /></span>
@@ -83,7 +83,7 @@ $news = $modelNews->start()->setlimit(sc_config('item_top'))->getData();
           </div>
         </div>
       </section>
-      
+
 {{-- Render block include view --}}
 @if ($includePathView = config('sc_include_view.home', []))
 @foreach ($includePathView as $view)
@@ -96,30 +96,6 @@ $news = $modelNews->start()->setlimit(sc_config('item_top'))->getData();
 
 @endsection
 
-@section('news')
-  @if ($news)
-  <!-- Our Blog-->
-  <section class="section section-xxl section-last bg-gray-21">
-    <div class="container">
-      <h2 class="wow fadeScale">{{ trans('front.blog') }}</h2>
-    </div>
-    <!-- Owl Carousel-->
-    <div class="owl-carousel owl-style-7" data-items="1" data-sm-items="2" data-xl-items="3" data-xxl-items="4" data-nav="true" data-dots="true" data-margin="30" data-autoplay="true">
-      @foreach ($news as $blog)
-      <!-- Post Creative-->
-      <article class="post post-creative"><a class="post-creative-figure" href="{{ $blog->getUrl() }}"><img src="{{ asset($blog->getThumb()) }}" alt="" width="420" height="368"/></a>
-        <div class="post-creative-content">
-          <h5 class="post-creative-title"><a href="{{ $blog->getUrl() }}">{{ $blog->title }}</a></h5>
-          <div class="post-creative-time">
-            <time datetime="{{ $blog->created_at }}">{{ $blog->created_at }}</time>
-          </div>
-        </div>
-      </article>
-      @endforeach
-    </div>
-  </section>
-  @endif
-@endsection
 
 @push('styles')
 {{-- Your css style --}}

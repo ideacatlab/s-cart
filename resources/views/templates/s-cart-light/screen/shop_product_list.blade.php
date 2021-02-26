@@ -6,7 +6,7 @@ $layout_page = product_list
 Use paginate: $subCategory->appends(request()->except(['page','_token']))->links()
 - $products: paginate
 Use paginate: $products->appends(request()->except(['page','_token']))->links()
-*/ 
+*/
 @endphp
 
 @extends($sc_templatePath.'.layout')
@@ -57,7 +57,7 @@ Use paginate: $products->appends(request()->except(['page','_token']))->links()
           @foreach ($queries as $key => $query)
           <input type="hidden" name="{{ $key }}" value="{{ $query }}">
           @endforeach
-          
+
           <select class="form-control" name="filter_sort">
               <option value="">{{ trans('front.filters.sort') }}</option>
               <option value="price_asc" {{ ($filter_sort =='price_asc')?'selected':'' }}>
@@ -92,7 +92,7 @@ Use paginate: $products->appends(request()->except(['page','_token']))->links()
             <h5 class="product-title"><a href="{{ $product->getUrl() }}">{{ $product->name }}</a></h5>
 
             {{-- Go to store --}}
-            @if (sc_config_global('MultiVendorPro') && config('app.storeId') == SC_ID_ROOT)
+            @if (sc_config_global('MultiStorePro') && config('app.storeId') == SC_ID_ROOT)
             <div class="store-url"><a href="{{ $product->goToStore() }}"><i class="fa fa-shopping-bag" aria-hidden="true"></i> {{ trans('front.store').' '. $product->store_id  }}</a>
             </div>
             @endif
@@ -105,7 +105,7 @@ Use paginate: $products->appends(request()->except(['page','_token']))->links()
 
             {!! $product->showPrice() !!}
           </div>
-          
+
           @if ($product->price != $product->getFinalPrice() && $product->kind !=SC_PRODUCT_GROUP)
           <span><img class="product-badge new" src="{{ asset($sc_templateFile.'/images/home/sale.png') }}" class="new" alt="" /></span>
           @elseif($product->kind == SC_PRODUCT_BUILD)
@@ -117,11 +117,6 @@ Use paginate: $products->appends(request()->except(['page','_token']))->links()
             <div class="product-button">
                 <a class="button button-secondary button-zakaria" onClick="addToCartAjax('{{ $product->id }}','wishlist','{{ $product->store_id }}')">
                     <i class="fas fa-heart"></i>
-                </a>
-            </div>
-            <div class="product-button">
-                <a class="button button-primary button-zakaria" onClick="addToCartAjax('{{ $product->id }}','compare','{{ $product->store_id }}')">
-                    <i class="fa fa-exchange"></i>
                 </a>
             </div>
           </div>

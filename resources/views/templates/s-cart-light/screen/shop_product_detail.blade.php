@@ -64,20 +64,20 @@ $layout_page = product_detail
               <div class="single-product">
                 <h3 class="text-transform-none font-weight-medium" id="product-detail-name">{{ $product->name }}</h3>
                 {{-- Go to store --}}
-                @if (sc_config_global('MultiVendorPro') && config('app.storeId') == SC_ID_ROOT)
+                @if (sc_config_global('MultiStorePro') && config('app.storeId') == SC_ID_ROOT)
                 <div class="store-url"><a href="{{ $product->goToStore() }}"><i class="fa fa-shopping-bag" aria-hidden="true"></i> {{ trans('front.store').' '. $product->store_id  }}</a>
                 </div>
                 @endif
                 {{-- End go to store --}}
-                
-                <p>
+
+                <!-- <p>
                   SKU: <span id="product-detail-model">{{ $product->sku }}</span>
-                </p>
+                </p> -->
 
                 {{-- Show price --}}
                 <div class="group-md group-middle">
                   <div class="single-product-price" id="product-detail-price">
-                    {!! $product->showPriceDetail() !!}
+                    {!! $product->showPrice() !!}
                   </div>
                 </div>
                 {{--// Show price --}}
@@ -113,11 +113,11 @@ $layout_page = product_detail
                     {{ trans('product.stock_status') }}:
                     <span id="stock_status">
                         @if($product->stock <=0 && !sc_config('product_buy_out_of_stock'))
-                            {{ trans('product.out_stock') }} 
-                            @else 
-                            {{ trans('product.in_stock') }} 
-                            @endif 
-                    </span> 
+                            {{ trans('product.out_stock') }}
+                            @else
+                            {{ trans('product.in_stock') }}
+                            @endif
+                    </span>
                 </div>
                 @endif
                 {{--// Stock info --}}
@@ -134,7 +134,7 @@ $layout_page = product_detail
                 {{--// date available --}}
 
                 {{-- Category info --}}
-                {{ trans('product.category') }}: 
+                {{ trans('product.category') }}:
                 @foreach ($product->categories as $category)
                   <a href="{{ $category->getUrl() }}">{{ $category->getTitle() }}</a>,
                 @endforeach
@@ -195,9 +195,7 @@ $layout_page = product_detail
                   <div>
                     <ul class="list-inline list-social list-inline-sm">
                       <li><a class="icon mdi mdi-facebook" href="#"></a></li>
-                      <li><a class="icon mdi mdi-twitter" href="#"></a></li>
                       <li><a class="icon mdi mdi-instagram" href="#"></a></li>
-                      <li><a class="icon mdi mdi-google-plus" href="#"></a></li>
                     </ul>
                   </div>
                 </div>
@@ -252,10 +250,10 @@ $layout_page = product_detail
                       <a onClick="addToCartAjax('{{ $product_rel->id }}','default','{{ $product_rel->store_id }}')" class="button button-lg button-secondary button-zakaria add-to-cart-list">
                         <i class="fa fa-cart-plus"></i> {{trans('front.add_to_cart')}}</a>
                       @endif
-            
+
                       {!! $product_rel->showPrice() !!}
                     </div>
-                    
+
                     @if ($product_rel->price != $product_rel->getFinalPrice() && $product_rel->kind !=SC_PRODUCT_GROUP)
                     <span><img class="product-badge new" src="{{ asset($sc_templateFile.'/images/home/sale.png') }}" class="new" alt="" /></span>
                     @elseif($product_rel->kind == SC_PRODUCT_BUILD)
@@ -319,11 +317,11 @@ $bannerBreadcrumb = $modelBanner->start()->getBreadcrumb()->getData()->first();
     <div class="container">
       <ul class="breadcrumbs-custom-path">
         <li><a href="{{ sc_route('home') }}">{{ trans('front.home') }}</a></li>
-        {{-- Display store info if use MultiVendorPro --}}
-        @if (sc_config_global('MultiVendorPro') && config('app.storeId') == SC_ID_ROOT)
+        {{-- Display store info if use MultiStorePro --}}
+        @if (sc_config_global('MultiStorePro') && config('app.storeId') == SC_ID_ROOT)
         <li><a href="{{ $goToStore }}">{{ sc_store('title', $product->store_id) }}</a></li>
         @endif
-        {{--// Display store info if use MultiVendorPro --}}
+        {{--// Display store info if use MultiStorePro --}}
         <li class="active">{{ $title ?? '' }}</li>
       </ul>
     </div>
