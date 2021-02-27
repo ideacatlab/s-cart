@@ -32,7 +32,7 @@ class ShopCartController extends RootFrontController
      * @param [type] ...$params
      * @return void
      */
-    public function getCartProcessFront(...$params) 
+    public function getCartProcessFront(...$params)
     {
         if (config('app.seoLang')) {
             $lang = $params[0] ?? '';
@@ -50,7 +50,7 @@ class ShopCartController extends RootFrontController
         session()->forget('paymentMethod'); //destroy paymentMethod
         session()->forget('shippingMethod'); //destroy shippingMethod
         session()->forget('orderID'); //destroy orderID
-        
+
         //Shipping
         $moduleShipping = sc_get_plugin_installed('shipping');
         $sourcesShipping = sc_get_all_plugin('shipping');
@@ -71,7 +71,7 @@ class ShopCartController extends RootFrontController
                 $moduleClass = $sourcesPayment[$module['key']].'\AppConfig';
                 $paymentMethod[$module['key']] = (new $moduleClass)->getData();
             }
-        }        
+        }
 
         //Total
         $moduleTotal = sc_get_plugin_installed('total');
@@ -82,7 +82,7 @@ class ShopCartController extends RootFrontController
                 $moduleClass = $sourcesTotal[$module['key']].'\AppConfig';
                 $totalMethod[$module['key']] = (new $moduleClass)->getData();
             }
-        } 
+        }
 
         // Shipping address
         $customer = auth()->user();
@@ -178,7 +178,7 @@ class ShopCartController extends RootFrontController
      * @param [type] ...$params
      * @return void
      */
-    public function checkoutPrepareProcessFront(...$params) 
+    public function checkoutPrepareProcessFront(...$params)
     {
         if (config('app.seoLang')) {
             $lang = $params[0] ?? '';
@@ -241,7 +241,7 @@ class ShopCartController extends RootFrontController
         }
         if (sc_config('customer_phone')) {
             if (sc_config('customer_phone_required')) {
-                $validate['phone'] = config('validation.customer.phone_required', 'required|regex:/^0[^0][0-9\-]{7,13}$/');
+                $validate['phone'] = config('validation.customer.phone_required', 'required|regex:/^0[^0][0-9\-+]{7,13}$/');
             } else {
                 $validate['phone'] = config('validation.customer.phone_null', 'nullable|regex:/^0[^0][0-9\-]{7,13}$/');
             }
@@ -268,7 +268,7 @@ class ShopCartController extends RootFrontController
             } else {
                 $validate['company'] = config('validation.customer.company_null', 'nullable|string|max:100');
             }
-        } 
+        }
 
         if (sc_config('customer_name_kana')) {
             if (sc_config('customer_name_kana_required')) {
@@ -314,8 +314,8 @@ class ShopCartController extends RootFrontController
 
 
         $v = Validator::make(
-            $data, 
-            $validate, 
+            $data,
+            $validate,
             $messages
         );
         if ($v->fails()) {
@@ -383,7 +383,7 @@ class ShopCartController extends RootFrontController
      * @param [type] ...$params
      * @return void
      */
-    public function getCheckoutProcessFront(...$params) 
+    public function getCheckoutProcessFront(...$params)
     {
         if (config('app.seoLang')) {
             $lang = $params[0] ?? '';
@@ -456,7 +456,7 @@ class ShopCartController extends RootFrontController
 
     /**
      * Add to cart by method post, always use in the product page detail
-     * 
+     *
      * @return [redirect]
      */
     public function addToCart()
@@ -490,7 +490,7 @@ class ShopCartController extends RootFrontController
                 ]
             );
         }
-        
+
 
         if ($product->allowSale()) {
             $options = array();
@@ -789,7 +789,7 @@ class ShopCartController extends RootFrontController
         $new_qty = $data['new_qty'] ?? 0;
         $storeId = $data['storeId'] ?? config('app.storeId');
         $product = (new ShopProduct)->getDetail($id, null, $storeId);
-        
+
         if (!$product) {
             return response()->json(
                 [
@@ -798,7 +798,7 @@ class ShopCartController extends RootFrontController
                 ]
             );
         }
-        
+
         if ($product->stock < $new_qty && !sc_config('product_buy_out_of_stock', $product->store_id)) {
             return response()->json(
                 [
@@ -823,7 +823,7 @@ class ShopCartController extends RootFrontController
      * @param [type] ...$params
      * @return void
      */
-    public function wishlistProcessFront(...$params) 
+    public function wishlistProcessFront(...$params)
     {
         if (config('app.seoLang')) {
             $lang = $params[0] ?? '';
@@ -859,7 +859,7 @@ class ShopCartController extends RootFrontController
      * @param [type] ...$params
      * @return void
      */
-    public function compareProcessFront(...$params) 
+    public function compareProcessFront(...$params)
     {
         if (config('app.seoLang')) {
             $lang = $params[0] ?? '';
@@ -896,7 +896,7 @@ class ShopCartController extends RootFrontController
      * @param [type] ...$params
      * @return void
      */
-    public function clearCartProcessFront(...$params) 
+    public function clearCartProcessFront(...$params)
     {
         if (config('app.seoLang')) {
             $lang = $params[0] ?? '';
@@ -925,7 +925,7 @@ class ShopCartController extends RootFrontController
      * @param [type] ...$params
      * @return void
      */
-    public function removeItemProcessFront(...$params) 
+    public function removeItemProcessFront(...$params)
     {
         if (config('app.seoLang')) {
             $lang = $params[0] ?? '';
@@ -955,7 +955,7 @@ class ShopCartController extends RootFrontController
         return redirect(sc_route($instance));
     }
 
-    
+
     /**
      * Complete order
      *
@@ -1070,7 +1070,7 @@ class ShopCartController extends RootFrontController
                     sc_currency_render($data['total'], '', '', '', false),
                 ];
 
-                // Send mail order success to admin 
+                // Send mail order success to admin
                 if (sc_config('order_success_to_admin') && $checkContent) {
                     $content = $checkContent->text;
                     $content = preg_replace($dataFind, $dataReplace, $content);
@@ -1126,7 +1126,7 @@ class ShopCartController extends RootFrontController
      * @param [type] ...$params
      * @return void
      */
-    public function orderSuccessProcessFront(...$params) 
+    public function orderSuccessProcessFront(...$params)
     {
         if (config('app.seoLang')) {
             $lang = $params[0] ?? '';
