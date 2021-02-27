@@ -42,9 +42,9 @@
     <!-- css default for item s-cart -->
     <!--//end css defaut -->
 
-    <link rel="stylesheet" href="{{ asset($sc_templateFile.'/css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{ asset($sc_templateFile.'/css/fonts.css')}}">
-    <link rel="stylesheet" href="{{ asset($sc_templateFile.'/css/style.css')}}">
+    <link rel="stylesheet" href="{{ url($sc_templateFile.'/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{ url($sc_templateFile.'/css/fonts.css')}}">
+    <link rel="stylesheet" href="{{ url($sc_templateFile.'/css/style.css')}}">
     <style>
         {!! sc_store_css() !!}
     </style>
