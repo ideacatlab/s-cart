@@ -5,7 +5,9 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Passport\Passport;
 use Illuminate\Pagination\Paginator;
+use App\Providers\URL;
 class AppServiceProvider extends ServiceProvider
+
 {
     /**
      * Bootstrap any application services.
