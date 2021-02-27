@@ -29,7 +29,7 @@ class ShopAccountController extends RootFrontController
      * @param [type] ...$params
      * @return void
      */
-    public function indexProcessFront(...$params) 
+    public function indexProcessFront(...$params)
     {
         if (config('app.seoLang')) {
             $lang = $params[0] ?? '';
@@ -64,7 +64,7 @@ class ShopAccountController extends RootFrontController
      * @param [type] ...$params
      * @return void
      */
-    public function changePasswordProcessFront(...$params) 
+    public function changePasswordProcessFront(...$params)
     {
         if (config('app.seoLang')) {
             $lang = $params[0] ?? '';
@@ -127,7 +127,7 @@ class ShopAccountController extends RootFrontController
             'password_old.required' => trans('validation.required', ['attribute'=> trans('account.password_old')]),
         ];
         $v = Validator::make(
-            $request->all(), 
+            $request->all(),
             [
                 'password_old' => 'required',
                 'password' => config('validation.customer.password_confirm', 'required|string|min:6|confirmed'),
@@ -150,7 +150,7 @@ class ShopAccountController extends RootFrontController
      * @param [type] ...$params
      * @return void
      */
-    public function changeInfomationProcessFront(...$params) 
+    public function changeInfomationProcessFront(...$params)
     {
         if (config('app.seoLang')) {
             $lang = $params[0] ?? '';
@@ -184,7 +184,7 @@ class ShopAccountController extends RootFrontController
      *
      * @param   Request  $request  [$request description]
      *
-     * @return  [redirect] 
+     * @return  [redirect]
      */
     public function postChangeInfomation(Request $request)
     {
@@ -213,7 +213,7 @@ class ShopAccountController extends RootFrontController
      * @param [type] ...$params
      * @return void
      */
-    public function orderListProcessFront(...$params) 
+    public function orderListProcessFront(...$params)
     {
         if (config('app.seoLang')) {
             $lang = $params[0] ?? '';
@@ -247,7 +247,7 @@ class ShopAccountController extends RootFrontController
      * @param [type] ...$params
      * @return void
      */
-    public function orderDetailProcessFront(...$params) 
+    public function orderDetailProcessFront(...$params)
     {
         if (config('app.seoLang')) {
             $lang = $params[0] ?? '';
@@ -297,7 +297,7 @@ class ShopAccountController extends RootFrontController
      * @param [type] ...$params
      * @return void
      */
-    public function addressListProcessFront(...$params) 
+    public function addressListProcessFront(...$params)
     {
         if (config('app.seoLang')) {
             $lang = $params[0] ?? '';
@@ -332,7 +332,7 @@ class ShopAccountController extends RootFrontController
      * @param [type] ...$params
      * @return void
      */
-    public function updateAddressProcessFront(...$params) 
+    public function updateAddressProcessFront(...$params)
     {
         if (config('app.seoLang')) {
             $lang = $params[0] ?? '';
@@ -378,7 +378,7 @@ class ShopAccountController extends RootFrontController
      *
      * @param   Request  $request  [$request description]
      *
-     * @return  [redirect] 
+     * @return  [redirect]
      */
     public function postUpdateAddress(Request $request, $id)
     {
@@ -387,7 +387,7 @@ class ShopAccountController extends RootFrontController
         $address =  (new ShopCustomerAddress)->where('customer_id', $customer->id)
             ->where('id', $id)
             ->first();
-        
+
         $dataUpdate = [
             'first_name' => $data['first_name'],
             'address1' => $data['address1'],
@@ -405,7 +405,7 @@ class ShopAccountController extends RootFrontController
             $dataUpdate['address2'] = $data['address2']??'';
         }
         if (sc_config('customer_phone')) {
-            $validate['phone'] = config('validation.customer.phone_required', 'required|regex:/^0[^0][0-9\-]{7,13}$/');
+            $validate['phone'] = config('validation.customer.phone_required', 'required|regex:/^0[^0][0-9\-+]{7,13}$/');
             $dataUpdate['phone'] = $data['phone']??'';
         }
         if (sc_config('customer_country')) {
@@ -435,8 +435,8 @@ class ShopAccountController extends RootFrontController
         ];
 
         $v = Validator::make(
-            $dataUpdate, 
-            $validate, 
+            $dataUpdate,
+            $validate,
             $messages
         );
         if ($v->fails()) {
@@ -453,9 +453,9 @@ class ShopAccountController extends RootFrontController
     }
 
     /**
-     * Get address detail 
+     * Get address detail
      *
-     * @return  [json] 
+     * @return  [json]
      */
     public function getAddress() {
         $customer = auth()->user();
@@ -471,9 +471,9 @@ class ShopAccountController extends RootFrontController
     }
 
     /**
-     * Get address detail 
+     * Get address detail
      *
-     * @return  [json] 
+     * @return  [json]
      */
     public function deleteAddress() {
         $customer = auth()->user();
