@@ -52,7 +52,7 @@ return [
     |
      */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'https://casaartizanala.ro'),
     'asset_url' => env('ASSET_URL', null),
 
     /*
@@ -66,7 +66,7 @@ return [
     |
      */
 
-    'timezone' => 'Asia/ho_chi_minh',
+    'timezone' => 'Europe/Bucharest',
 
     /*
     |--------------------------------------------------------------------------
@@ -79,7 +79,7 @@ return [
     |
      */
 
-    'locale' => 'en',
+    'locale' => 'ro',
 
     /*
     |--------------------------------------------------------------------------
@@ -92,7 +92,7 @@ return [
     |
      */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'ro',
 
     /*
     |--------------------------------------------------------------------------
@@ -161,7 +161,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
-        
+
         App\Providers\RouteServiceProvider::class,
     ],
 
