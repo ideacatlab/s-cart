@@ -4,7 +4,7 @@ $layout_page = shop_home
 **Variables:**
 - $products: paginate
 Use paginate: $products->appends(request()->except(['page','_token']))->links()
-*/ 
+*/
 @endphp
 
 @extends($sc_templatePath.'.layout')
@@ -12,7 +12,7 @@ Use paginate: $products->appends(request()->except(['page','_token']))->links()
 {{-- block_main_content_center --}}
 @section('block_main_content_center')
 <div class="col-lg-8 col-xl-9">
-  
+
   {{-- Sort filter --}}
   <div class="product-top-panel group-md">
     <p class="product-top-panel-title">
@@ -25,7 +25,7 @@ Use paginate: $products->appends(request()->except(['page','_token']))->links()
           @foreach ($queries as $key => $query)
           <input type="hidden" name="{{ $key }}" value="{{ $query }}">
           @endforeach
-          
+
           <select class="form-control" name="filter_sort">
               <option value="">{{ trans('front.filters.sort') }}</option>
               <option value="price_asc" {{ ($filter_sort =='price_asc')?'selected':'' }}>
@@ -73,7 +73,7 @@ Use paginate: $products->appends(request()->except(['page','_token']))->links()
 
             {!! $product->showPrice() !!}
           </div>
-          
+
           @if ($product->price != $product->getFinalPrice() && $product->kind !=
           SC_PRODUCT_GROUP)
           <span><img class="product-badge new" src="{{ asset($sc_templateFile.'/images/home/sale.png') }}" class="new" alt="" /></span>
@@ -88,11 +88,11 @@ Use paginate: $products->appends(request()->except(['page','_token']))->links()
                     <i class="fas fa-heart"></i>
                 </a>
             </div>
-            <div class="product-button">
+            <!-- <div class="product-button">
                 <a class="button button-primary button-zakaria" onClick="addToCartAjax('{{ $product->id }}','compare','{{ $product->store_id }}')">
                     <i class="fa fa-exchange"></i>
                 </a>
-            </div>
+            </div> -->
           </div>
         </article>
       </div>
