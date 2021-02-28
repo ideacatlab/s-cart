@@ -6,6 +6,7 @@ return [
 
     'my_profile'         => 'My profile',
     'my_account'         => 'My account',
+    'reduceri'           => 'Sales',
     'notfound'           => 'Not found',
     'empty_product'      => 'No product!',
     'no_data'            => 'No data!',
