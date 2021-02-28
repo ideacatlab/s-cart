@@ -267,11 +267,11 @@ $layout_page = product_detail
                               <i class="fas fa-heart"></i>
                           </a>
                       </div>
-                      <div class="product-button">
+                      <!-- <div class="product-button">
                           <a class="button button-primary button-zakaria" onClick="addToCartAjax('{{ $product_rel->id }}','compare','{{ $product_rel->store_id }}')">
                               <i class="fa fa-exchange"></i>
                           </a>
-                      </div>
+                      </div> -->
                     </div>
                   </article>
             </div>
