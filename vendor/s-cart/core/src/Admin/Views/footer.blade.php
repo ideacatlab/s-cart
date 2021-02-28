@@ -4,10 +4,10 @@
       <strong>Env</strong>
       {{ config('app.env') }}
       &nbsp;&nbsp;
-      <strong>Version</strong> 
+      <strong>Version</strong>
       {{ config('s-cart.sub-version') }}
     </div>
-    <strong>Copyright &copy; {{ date('Y') }} <a href="{{ config('s-cart.homepage') }}">S-Cart: {{ config('s-cart.title') }}</a>.</strong> All rights
+    <strong>Copyright &copy; {{ date('Y') }} <a href="https://www.ideacat.ro">IdeaCat</a>.</strong> All rights
     reserved.
   @endif
 </footer>
