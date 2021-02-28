@@ -140,16 +140,6 @@ $layout_page = product_detail
                 @endforeach
                 {{--// Category info --}}
 
-                {{-- Brand info --}}
-                @if (sc_config('product_brand') && !empty($product->brand->name))
-                <div>
-                    {{ trans('product.brand') }}:
-                    <span id="product-detail-brand">
-                        {!! empty($product->brand->name) ? 'None' : '<a href="'.$product->brand->getUrl().'">'.$product->brand->name.'</a>' !!}
-                    </span>
-                </div>
-                @endif
-                {{--// Brand info --}}
 
                 {{-- Product kind --}}
                 @if ($product->kind == SC_PRODUCT_GROUP)
