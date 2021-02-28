@@ -69,11 +69,6 @@ $news = $modelNews->start()->setlimit(sc_config('item_top'))->getData();
                             <i class="fas fa-heart"></i>
                         </a>
                     </div>
-                    <div class="product-button">
-                        <a class="button button-primary button-zakaria" onClick="addToCartAjax('{{ $productNew->id }}','compare','{{ $productNew->store_id }}')">
-                            <i class="fa fa-exchange"></i>
-                        </a>
-                    </div>
                   {{-- //wishlist, compare --}}
 
                   </div>
