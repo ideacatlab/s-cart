@@ -15,6 +15,7 @@ $layout_page = shop_contact
             <address>
                 <p>{{ sc_store('title') }}</p>
                 <p>{{ sc_store('address') }}</p>
+                <p>{{ sc_store('long_phone') }}</p>
                 <p>{{ sc_store('email') }}</p>
             </address>
         </div>
